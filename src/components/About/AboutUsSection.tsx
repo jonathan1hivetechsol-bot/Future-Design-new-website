@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
-import { motion } from "framer-motion"; // Removed 'easeOut' import
+import { motion, Variants } from "framer-motion"; // <-- Added Variants
 
-// The 'fadeUp' variant definition
+// The 'fadeUp' variant definition with type assertion
 const fadeUp = {
   hidden: { opacity: 0, y: 60 },
   visible: {
@@ -10,11 +10,10 @@ const fadeUp = {
     y: 0,
     transition: {
       duration: 0.8,
-      // FIX: Changed from string/function ease to a supported numeric cubic-bezier array
       ease: [0, 0, 0.2, 1], 
     }
   },
-};
+} as Variants; // <-- The type assertion fix
 
 const AboutUsSection = () => {
   return (
@@ -23,7 +22,7 @@ const AboutUsSection = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      variants={fadeUp} // Line 25 in your log, where the error originated
+      variants={fadeUp} // The line that was failing
     >
       <div className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-12 md:gap-8">
         <motion.div

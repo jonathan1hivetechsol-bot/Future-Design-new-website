@@ -1,0 +1,15 @@
+<svg viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" width="140" height="28">
+  <!-- Red curved bracket -->
+  <g id="bracket">
+    <path d="M 20 15 Q 5 15 5 30 L 5 70 Q 5 85 20 85 L 32 85 L 32 73 Q 18 73 18 70 L 18 30 Q 18 27 32 27 L 32 15 Z" fill="#DC2626"/>
+  </g>
+  
+  <!-- Future Designz text in white (for dark mode) -->
+  <g id="text">
+    <text x="45" y="50" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#FFFFFF" letter-spacing="0">FUTURE</text>
+    <text x="45" y="85" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#FFFFFF" letter-spacing="0">DESIGNZ</text>
+  </g>
+  
+  <!-- Red accent line -->
+  <rect x="45" y="88" width="200" height="2" fill="#DC2626"/>
+</svg>

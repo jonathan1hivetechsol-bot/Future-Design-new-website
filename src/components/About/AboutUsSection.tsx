@@ -1,11 +1,18 @@
 "use client";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; // ❌ Removed 'easeOut' from import
 
-
+// Corrected fadeUp definition
 const fadeUp = {
   hidden: { opacity: 0, y: 60 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+      duration: 0.8, 
+      ease: "easeOut" // ✅ Fixed: Changed from the 'easeOut' function to the string literal "easeOut"
+    } 
+  },
 };
 
 const AboutUsSection = () => {

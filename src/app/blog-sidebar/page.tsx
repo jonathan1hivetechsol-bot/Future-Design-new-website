@@ -121,11 +121,7 @@ const BlogSidebarPage = () => {
                       {" "}
                       leading manufacturers{" "}
                     </strong>
-                    to ensure every product meets the highest quality standards and offers the perfect blend of beauty and performance for your bathroom space.
-                    </strong>
-                    proin libero nunc consequat interdum varius. Quam
-                    pellentesque nec nam aliquam sem et tortor consequat.
-                    Pellentesque adipiscing commodo elit at imperdiet.
+                    to ensure every product meets the highest quality standards and offers the perfect blend of beauty and performance for your bathroom space. Proin libero nunc consequat interdum varius. Quam pellentesque nec nam aliquam sem et tortor consequat. Pellentesque adipiscing commodo elit at imperdiet.
                   </p>
                   <p className="text-body-color mb-10 text-base leading-relaxed font-medium sm:text-lg sm:leading-relaxed lg:text-base lg:leading-relaxed xl:text-lg xl:leading-relaxed">
                     Semper auctor neque vitae tempus quam pellentesque nec.

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
+import SiteSearch from "@/components/Common/SiteSearch";
 
 const Header = () => {
   // Navbar toggle
@@ -38,6 +39,8 @@ const Header = () => {
     }
   };
 
+  const [showSearch, setShowSearch] = useState(false);
+
   const usePathName = usePathname();
 
   return (
@@ -46,6 +49,8 @@ const Header = () => {
         className={`header top-0 left-0 z-40 flex w-full items-center ${
           sticky
             ? "dark:bg-gray-dark dark:shadow-sticky-dark shadow-sticky fixed z-9999 bg-white/80 backdrop-blur-xs transition"
+            : showSearch
+            ? "relative bg-white/0"
             : "absolute bg-transparent"
         }`}
       >
@@ -74,6 +79,7 @@ const Header = () => {
                 />
               </Link>
             </div>
+            {/* search center slot removed; header shows icon that toggles a full-width search bar below */}
             <div className="flex w-full items-center justify-between px-4">
               <div>
                 <button
@@ -172,7 +178,15 @@ const Header = () => {
                   </ul>
                 </nav>
               </div>
-              <div className="flex items-center justify-end pr-16 lg:pr-0">
+              <div className="flex items-center justify-end pr-16 lg:pr-0 gap-4">
+                <div className="flex items-center">
+                  <button aria-label="Open search" onClick={() => setShowSearch((s) => !s)} className="inline-flex items-center justify-center rounded-md p-2 hover:bg-body-color/10">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
                 <Link
                   href="/signin"
                   className="text-dark hidden px-7 py-3 text-base font-medium hover:opacity-70 md:block dark:text-white"
@@ -193,6 +207,13 @@ const Header = () => {
           </div>
         </div>
       </header>
+      {showSearch && (
+        <div className="w-full bg-white dark:bg-gray-900 border-b">
+          <div className="container py-4">
+            <SiteSearch showInput autoFocus onClose={() => setShowSearch(false)} className="w-full max-w-[900px] mx-auto" />
+          </div>
+        </div>
+      )}
     </>
   );
 };

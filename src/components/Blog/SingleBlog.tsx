@@ -17,11 +17,11 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
           </span>
           <Image src={image} alt="image" fill sizes="(max-width: 768px) 100vw, 33vw" />
         </Link>
-        <div className="p-6 sm:p-8 md:px-6 md:py-8 lg:p-8 xl:px-5 xl:py-8 2xl:p-8 flex flex-col flex-1">
+        <div className="p-4 sm:p-6 md:px-6 md:py-8 lg:p-8 xl:px-5 xl:py-8 2xl:p-8 flex flex-col flex-1">
           <h3>
             <Link
               href={`/blog-details?id=${blog.id}`}
-              className="hover:text-primary dark:hover:text-primary mb-4 block text-xl font-bold text-black sm:text-2xl dark:text-white"
+              className="hover:text-primary dark:hover:text-primary mb-4 block text-lg sm:text-xl font-bold text-black md:text-2xl dark:text-white"
             >
               {title}
             </Link>

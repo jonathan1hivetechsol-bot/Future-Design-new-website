@@ -29,7 +29,7 @@ const Footer = () => {
         }`}
       >
         <div className="container">
-          <div className="-mx-4 flex flex-wrap">
+          <div className="-mx-4 flex flex-col sm:flex-row flex-wrap">
             <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-5/12">
               <div className="mb-12 lg:mb-16 max-w-full lg:max-w-[360px]">
                 <Link href="/" className="mb-8 inline-block">

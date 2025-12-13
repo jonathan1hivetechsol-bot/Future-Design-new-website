@@ -139,10 +139,10 @@ const Hero = () => {
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
               <div className="mx-auto max-w-[900px] text-center">
-                <h1 className="mb-6 text-4xl font-black leading-tight text-black dark:text-white sm:text-5xl sm:leading-tight md:text-6xl md:leading-tight lg:text-7xl lg:leading-tight">
+                <h1 className="mb-6 text-3xl font-black leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight lg:text-6xl lg:leading-tight xl:text-7xl xl:leading-tight">
                   Elevate Your Space with <span className="bg-gradient-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">Premium Tiles</span>
                 </h1>
-                <p className="mb-12 text-lg leading-relaxed text-gray-600 dark:text-gray-300 sm:text-xl md:text-2xl">
+                <p className="mb-12 text-sm leading-relaxed text-gray-600 dark:text-gray-300 sm:text-base md:text-lg md:leading-relaxed lg:text-xl lg:leading-relaxed">
                   Discover luxurious bathroom and floor tiles paired with premium fixtures imported from Spain, Italy, Germany, Turkey, and China. Since 2011, Future Designz has delivered exceptional quality and expert design guidance to transform homes.
                 </p>
                 <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">

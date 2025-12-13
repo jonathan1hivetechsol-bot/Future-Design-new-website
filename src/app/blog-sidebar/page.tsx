@@ -8,7 +8,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Blog Details Page",
-  description: "This is Blog Details Page for Startup Nextjs Template",
+  description: "In-depth articles and case studies from Future Designz on tile selection and design.",
   // other metadata
 };
 

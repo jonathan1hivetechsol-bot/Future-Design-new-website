@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Sign In Page",
-  description: "This is Sign In Page for Startup Nextjs Template",
+  description: "Sign in to your Future Designz account to access saved quotes and orders.",
   // other metadata
 };
 

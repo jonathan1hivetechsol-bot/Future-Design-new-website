@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Error Page",
-  description: "This is Error Page for Startup Nextjs Template",
+  description: "Page not found — Future Designz",
   // other metadata
 };
 

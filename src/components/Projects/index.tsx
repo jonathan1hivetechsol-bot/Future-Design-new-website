@@ -101,14 +101,14 @@ function ProjectsSlider({ projects, onOpenImage }: { projects: any[]; onOpenImag
     el.scrollBy({ left: move, behavior: "smooth" });
   };
 
-  if (isMobile) {
+    if (isMobile) {
     const firstThree = projects.slice(0, 3);
     return (
       <div>
         <div className="grid grid-cols-3 gap-4">
           {firstThree.map((project) => (
-            <div key={project.id} className="overflow-hidden rounded-lg shadow-lg">
-              <div className="relative h-28 w-full overflow-hidden bg-gray-200">
+            <div key={project.id} className="overflow-hidden rounded-lg shadow-lg transform transition-transform duration-300 hover:-translate-y-3 hover:shadow-feature-2 hover:z-20 border-2 border-red-500 opacity-100 dark:opacity-100">
+              <div className="relative h-28 w-full overflow-hidden bg-gray-200 dark:bg-gray-700">
                 <button onClick={() => onOpenImage(project.image)} className="block h-full w-full p-0 m-0 text-left" aria-label={`Open ${project.title} image`}>
                   <Image src={project.image} alt={project.title} fill className="object-cover" />
                 </button>
@@ -129,13 +129,13 @@ function ProjectsSlider({ projects, onOpenImage }: { projects: any[]; onOpenImag
         <div ref={containerRef} className="flex gap-6 overflow-x-auto no-scrollbar py-4 px-1">
           {projects.map((project) => (
             <div key={project.id} className="min-w-[280px] max-w-[320px] flex-shrink-0">
-              <div className="overflow-hidden rounded-lg shadow-lg">
-                <div className="relative h-64 w-full overflow-hidden bg-gray-200">
+              <div className="overflow-hidden rounded-lg shadow-lg transform transition-transform duration-300 hover:-translate-y-3 hover:shadow-feature-2 hover:z-20 border-2 border-red-500 opacity-100 dark:opacity-100">
+                <div className="relative h-64 w-full overflow-hidden bg-gray-200 dark:bg-gray-700">
                   <button onClick={() => onOpenImage(project.image)} className="block h-full w-full p-0 m-0 text-left" aria-label={`Open ${project.title} image`}>
                     <Image src={project.image} alt={project.title} fill className="object-cover transition-transform duration-300 hover:scale-110" />
                   </button>
                 </div>
-                <div className="bg-white p-4 dark:bg-gray-800">
+                <div className="bg-white p-4 dark:bg-gray-800 opacity-100 dark:opacity-100">
                   <h3 className="mb-1 text-md font-semibold text-black dark:text-white">{project.title}</h3>
                   <p className="text-sm text-body-color dark:text-body-color-dark">{project.description}</p>
                 </div>

@@ -18,7 +18,7 @@ const fadeUp = {
 const AboutUsSection = () => {
   return (
     <motion.section
-      className="py-16 md:py-24 lg:py-32 bg-white"
+      className="py-16 md:py-24 lg:py-32 bg-white dark:bg-gray-dark"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
@@ -31,10 +31,10 @@ const AboutUsSection = () => {
           transition={{ delay: 0.1 }}
         >
           <span className="uppercase tracking-widest text-sm text-red-600 mb-2 font-semibold">About Us</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
-            Helping businesses <span className="text-red-600">succeed</span> through the power of <span className="text-black">design</span>.
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
+            Helping businesses <span className="text-red-600">succeed</span> through the power of <span className="text-black dark:text-white">design</span>.
           </h2>
-          <p className="text-gray-700 mb-8 max-w-xl">
+          <p className="text-gray-700 dark:text-gray-300 mb-8 max-w-xl">
             Future Designz is dedicated to transforming spaces with innovative, premium tiles and fixtures. Our passion for design and quality drives us to deliver exceptional solutions for homes and businesses, helping you create environments that inspire.
           </p>
           <button className="bg-red-600 hover:bg-red-700 text-white font-medium px-8 py-3 rounded transition mb-4 md:mb-0 shadow-lg">
@@ -52,7 +52,7 @@ const AboutUsSection = () => {
               alt="Future Designz Logo"
               width={320}
               height={320}
-              className="rounded-xl shadow-2xl bg-white p-6 object-contain"
+              className="rounded-xl shadow-2xl bg-white dark:bg-gray-800 p-6 object-contain"
               priority
             />
           </div>

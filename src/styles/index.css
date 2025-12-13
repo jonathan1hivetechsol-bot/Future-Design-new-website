@@ -30,7 +30,7 @@ layer(base);
   --color-bg-color-dark: #0f1419;
 
   --color-body-color: #6b7280;
-  --color-body-color-dark: #d1d5db;
+  --color-body-color-dark: #e6eef2;
 
   --color-stroke-stroke: #e5e7eb;
   --color-stroke-dark: #2d3748;
@@ -135,6 +135,40 @@ layer(base);
   body {
     font-family: "Inter", sans-serif;
   }
+  /* make default text in dark mode slightly brighter for readability */
+  body.dark {
+    color: var(--color-body-color-dark);
+  }
+}
+
+/* Global dark-mode harmonization
+   - Make common white backgrounds use the site's dark background color
+   - Ensure headings and primary dark-mode text are bright enough
+   These rules use !important to reliably override inline Tailwind classes
+*/
+.dark .bg-white {
+  background-color: var(--color-gray-dark) !important;
+}
+.dark .bg-gray-light {
+  background-color: var(--color-gray-dark) !important;
+}
+.dark .text-black,
+.dark .text-gray-900 {
+  color: var(--color-white) !important;
+}
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: var(--color-white) !important;
+}
+.dark .text-body-color {
+  color: var(--color-body-color-dark) !important;
+}
+.dark .bg-white\/10 {
+  background-color: rgba(255,255,255,0.04) !important;
 }
 
 @layer components {

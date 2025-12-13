@@ -111,10 +111,10 @@ const AboutUsSection = () => {
         <div className="relative">
           {/* connector line for desktop */}
           <div className="hidden md:block absolute inset-x-0 top-1/2 -z-0">
-            <div className="mx-auto w-3/4 h-px bg-gradient-to-r from-red-200 via-red-300 to-red-200 opacity-40" />
+            <div className="mx-auto w-3/4 h-px bg-gradient-to-r from-red-100 via-red-200 to-red-100 opacity-30" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {[
               {
                 id: 1,
@@ -139,21 +139,21 @@ const AboutUsSection = () => {
               },
             ].map((step) => (
               <div key={step.id} className="relative z-10">
-                <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md transform transition hover:-translate-y-3 hover:shadow-lg h-full flex flex-col">
+                <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 border border-gray-100 dark:border-gray-800 shadow-md transform transition hover:-translate-y-2 hover:shadow-lg h-full flex flex-col">
                   <div className="flex items-center gap-4">
-                    <div className={`flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br ${step.color} text-white shadow-sm flex-shrink-0`}>                      
-                      <svg width="28" height="28" viewBox="0 0 24 24" className="fill-current text-gray-800 dark:text-white">
+                    <div className={`flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br ${step.color} text-white shadow-sm flex-shrink-0`}>                      
+                      <svg width="28" height="28" viewBox="0 0 24 24" className="fill-current text-white">
                         {step.icon}
                       </svg>
                     </div>
                     <div>
-                      <div className="text-sm font-semibold text-gray-700 dark:text-gray-200">Step {step.id}</div>
+                      <div className="text-sm font-semibold text-red-600">Step {step.id}</div>
                       <h4 className="text-lg font-bold text-gray-900 dark:text-white">{step.title}</h4>
                     </div>
                   </div>
-                  <p className="mt-4 text-sm text-body-color flex-1">{step.text}</p>
-                  <div className="mt-4 text-right">
-                    <a href="/projects" className="inline-block text-sm font-medium text-red-600 hover:underline">See examples →</a>
+                  <p className="mt-4 text-sm text-body-color flex-1 leading-relaxed">{step.text}</p>
+                  <div className="mt-6 text-right">
+                    <a href="/projects" className="inline-block text-sm font-medium text-red-700 hover:underline">See examples →</a>
                   </div>
                 </div>
               </div>

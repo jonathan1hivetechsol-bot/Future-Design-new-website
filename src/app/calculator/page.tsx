@@ -11,32 +11,13 @@ export const metadata = {
 export default function CalculatorPage() {
   return (
     <div className="container mx-auto px-4 pt-24 pb-12">
-      {/* Hero: calculator intro */}
-      <section className="mb-8 rounded-lg bg-gradient-to-r from-red-50 to-white dark:from-gray-900 dark:to-gray-800">
-        <div className="container mx-auto px-4 py-10">
-          <div className="flex flex-col lg:flex-row items-center gap-6">
-            <div className="w-full lg:w-7/12">
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Tile Calculator — Plan & Estimate with Confidence</h1>
-              <p className="mt-4 text-body-color max-w-2xl">Quickly estimate the quantity of tiles you need, factor in wastage, and calculate expected costs. Perfect for homeowners and contractors planning tiling projects.</p>
-              <div className="mt-6 flex items-center gap-3">
-                <ScrollToCalculatorButton>Start Calculating</ScrollToCalculatorButton>
-                <a href="/contact" className="text-sm text-body-color hover:underline">Need help? Contact us</a>
-              </div>
-            </div>
-            <div className="w-full lg:w-5/12">
-              <div className="rounded-md overflow-hidden shadow-sm">
-                <Image src="/calculator/tile cost calcu.webp" alt="Tile calculator illustration" width={900} height={520} className="w-full h-auto object-cover" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero section removed as requested */}
 
       {/* Tile Cost summary section */}
       <section className="mt-6 mb-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-col-reverse lg:flex-row items-center gap-6">
-            <div className="w-full lg:w-1/2">
+            <div className="w-full lg:w-2/3">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">Tile Cost Calculator</h2>
               <p className="text-body-color mb-4">Estimate your tile cost quickly — input area, tile size, price per box and wastage percentage to get a reliable material and cost estimate for your project.</p>
               <ul className="list-inside list-disc text-body-color mb-4">
@@ -46,9 +27,9 @@ export default function CalculatorPage() {
               </ul>
               <ScrollToCalculatorButton>Calculate</ScrollToCalculatorButton>
             </div>
-            <div className="w-full lg:w-1/2">
+            <div className="w-full lg:w-1/3">
               <div className="rounded-lg overflow-hidden shadow-sm">
-                <Image src="/calculator/tile cost calcu.webp" alt="Tile cost calculator" width={900} height={520} className="w-full h-auto object-cover" />
+                <Image src="/calculator/tile cost calcu.webp" alt="Tile cost calculator" width={500} height={300} className="w-full h-auto object-cover" />
               </div>
             </div>
           </div>

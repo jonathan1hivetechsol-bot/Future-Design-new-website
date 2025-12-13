@@ -2,6 +2,7 @@ import AboutSectionOne from "@/components/About/AboutSectionOne";
 import AboutSectionTwo from "@/components/About/AboutSectionTwo";
 import AboutUsSection from "@/components/About/AboutUsSection";
 import HeroShowcase from "@/components/About/HeroShowcase";
+import SupportCard from "@/components/Common/SupportCard";
 import Breadcrumb from "@/components/Common/Breadcrumb";
 
 import { Metadata } from "next";
@@ -20,6 +21,7 @@ const AboutPage = () => {
         description="Discover our passion for transforming spaces with premium bathroom tiles and fixtures. We partner with leading international brands to deliver quality and innovation."
       />
       <HeroShowcase />
+      <SupportCard />
       <AboutUsSection />
       <AboutSectionOne />
       <AboutSectionTwo />

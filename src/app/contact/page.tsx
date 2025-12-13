@@ -1,6 +1,7 @@
 import Breadcrumb from "@/components/Common/Breadcrumb";
 import Contact from "@/components/Contact";
 import HeroShowcase from "@/components/About/HeroShowcase";
+import SupportCard from "@/components/Common/SupportCard";
 
 import { Metadata } from "next";
 
@@ -19,6 +20,7 @@ const ContactPage = () => {
       />
 
       <HeroShowcase />
+      <SupportCard />
 
       <Contact />
     </>

@@ -13,9 +13,6 @@ export default function CalculatorPage() {
         <div style={{ minHeight: '60vh' }} className="p-6">
           <Calculator />
         </div>
-        <div className="p-4 bg-white dark:bg-gray-900 text-center">
-          <a href="/calculator/index.html" target="_blank" rel="noreferrer" className="text-primary underline">Open calculator in new tab (standalone)</a>
-        </div>
       </div>
     </div>
   );

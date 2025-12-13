@@ -14,6 +14,7 @@ function toMeters(value: number, unit: string) {
 }
 
 export default function Calculator() {
+  const [scale, setScale] = useState<number>(1);
   const [currentShape, setCurrentShape] = useState("rectangle");
   const [length, setLength] = useState<string>("12");
   const [width, setWidth] = useState<string>("10");
@@ -284,9 +285,32 @@ export default function Calculator() {
 
   return (
     <div className="p-6 bg-white dark:bg-gray-900 rounded-lg shadow dark:shadow-lg">
+      <div style={{ transform: `scale(${scale})`, transformOrigin: 'top center', overflow: 'visible' }}>
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-2xl font-bold text-primary dark:text-white">Premium Tile Calculator Pro</h2>
         <div className="text-sm text-gray-600 dark:text-gray-300">PRO</div>
+      </div>
+
+      {/* Mobile-only slider to adjust calculator scale */}
+      <div className="block md:hidden mt-3 mb-4 sticky top-3 bg-transparent z-50">
+        <div className="rounded-md bg-white/90 dark:bg-gray-900/90 p-2 shadow-sm backdrop-blur-sm">
+          <div className="flex items-center justify-between">
+            <label className="text-sm font-medium">Adjust view</label>
+            <div className="text-sm font-semibold">{Math.round(scale * 100)}%</div>
+          </div>
+          <div className="flex items-center gap-3 mt-2">
+            <input
+              aria-label="Adjust calculator scale"
+              type="range"
+              min={70}
+              max={115}
+              value={Math.round(scale * 100)}
+              onChange={(e) => setScale(Number(e.target.value) / 100)}
+              className="w-full"
+            />
+          </div>
+          <div className="text-xs text-gray-500 mt-1">Tip: reduce scale if content overflows on small screens.</div>
+        </div>
       </div>
 
       <div className="mb-4">
@@ -429,6 +453,7 @@ export default function Calculator() {
           <button onClick={addRoom} className="px-3 py-2 rounded border">Add Room</button>
           <button onClick={()=>{ const res = calculateMultiRoom(); if(res) alert(`Tiles: ${res.tilesWithWast}`); }} className="px-3 py-2 rounded border">Calc Multi</button>
         </div>
+      </div>
       </div>
     </div>
   );

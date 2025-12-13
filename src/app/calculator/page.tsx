@@ -11,14 +11,8 @@ export const metadata = {
 export default function CalculatorPage() {
   return (
     <div className="container mx-auto px-4 pt-28 pb-12">
-      <div className="max-w-5xl mx-auto shadow-lg rounded-lg overflow-hidden" id="site-calculator">
-        <div style={{ minHeight: "60vh" }} className="p-6">
-          <Calculator />
-        </div>
-      </div>
-
-      {/* New Tile Cost section */}
-      <section className="mt-12">
+      {/* New Tile Cost section (moved above calculator) */}
+      <section className="mt-6 mb-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-col-reverse lg:flex-row items-center gap-6">
             <div className="w-full lg:w-1/2">
@@ -39,6 +33,12 @@ export default function CalculatorPage() {
           </div>
         </div>
       </section>
+
+      <div className="max-w-5xl mx-auto shadow-lg rounded-lg overflow-hidden" id="site-calculator">
+        <div style={{ minHeight: "60vh" }} className="p-6">
+          <Calculator />
+        </div>
+      </div>
     </div>
   );
 }

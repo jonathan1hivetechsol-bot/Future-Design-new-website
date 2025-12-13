@@ -2,10 +2,24 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import React, { useEffect, useState } from "react";
 
 const Footer = () => {
   const { ref, isVisible } = useScrollReveal();
-  
+  const [siteUrl, setSiteUrl] = useState<string>(process.env.NEXT_PUBLIC_SITE_URL || "https://futuredesignz.pk");
+
+  useEffect(() => {
+    try {
+      if (typeof window !== "undefined" && window.location?.origin) {
+        setSiteUrl(window.location.origin);
+      }
+    } catch (e) {
+      // ignore and keep fallback
+    }
+  }, []);
+
+  const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(siteUrl)}`;
+
   return (
     <>
       <footer 
@@ -139,6 +153,14 @@ const Footer = () => {
                     </Link>
                   </li>
                 </ul>
+                <div className="mt-6 flex items-center gap-4">
+                  <div className="w-[110px] h-[110px] rounded-md overflow-hidden border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-2">
+                    <img src={qrSrc} alt="Scan to visit site" className="w-full h-full object-contain" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-gray-900 dark:text-white">Scan to visit our site</p>
+                  </div>
+                </div>
               </div>
             </div>
 

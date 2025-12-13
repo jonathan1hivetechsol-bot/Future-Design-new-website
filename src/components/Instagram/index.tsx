@@ -28,38 +28,22 @@ const ImageWithFallback = ({ src, fallback = "/images/instagram/bathroom-4.webp"
 };
 
 const InstagramGallery = () => {
-  const [posts, setPosts] = useState<InstagramPost[]>([]);
-  const [loading, setLoading] = useState(true);
+  const fallbackPosts: InstagramPost[] = [
+    { id: "1", image: "/images/instagram/instagram%201.webp", title: "Project Image 1", likes: 1250, comments: 89 },
+    { id: "2", image: "/images/instagram/instagram%202.webp", title: "Project Image 2", likes: 987, comments: 76 },
+    { id: "3", image: "/images/instagram/instagram%203.webp", title: "Project Image 3", likes: 1120, comments: 94 },
+    { id: "4", image: "/images/instagram/instagram%204.webp", title: "Project Image 4", likes: 856, comments: 64 },
+    { id: "5", image: "/images/instagram/instagram%205.webp", title: "Project Image 5", likes: 743, comments: 58 },
+    { id: "6", image: "/images/instagram/instagram%206.webp", title: "Project Image 6", likes: 654, comments: 42 },
+    { id: "7", image: "/images/instagram/instagram%207.webp", title: "Project Image 7", likes: 512, comments: 28 },
+    { id: "8", image: "/images/instagram/instagram%208.webp", title: "Project Image 8", likes: 431, comments: 19 },
+  ];
+
+  const [posts, setPosts] = useState<InstagramPost[]>(fallbackPosts);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const autoplayRef = useRef<number | null>(null);
   const [slidesPerView, setSlidesPerView] = useState(3);
 
-  const fallbackPosts: InstagramPost[] = [
-    { id: "1", image: "/images/instagram/wall-hung-commode.jpg", title: "Wall Hung Commode", likes: 1250, comments: 89 },
-    { id: "2", image: "/images/instagram/turn-faucet.jpg", title: "Turn Surfaces and Finishes", likes: 987, comments: 76 },
-    { id: "3", image: "/images/instagram/jorger-tap.webp", title: "Premium Jörger Fixtures", likes: 1120, comments: 94 },
-    { id: "4", image: "/images/instagram/bathroom-4.webp", title: "Contemporary Style", likes: 856, comments: 64 },
-    { id: "5", image: "/images/instagram/bathroom-5.webp", title: "Elegant Finishes", likes: 743, comments: 58 },
-  ];
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const res = await fetch("/api/instagram");
-        if (res.ok) {
-          const json = await res.json();
-          setPosts(json.posts || fallbackPosts);
-        } else {
-          setPosts(fallbackPosts);
-        }
-      } catch (e) {
-        setPosts(fallbackPosts);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchPosts();
-  }, []);
 
   useEffect(() => {
     const onResize = () => {
@@ -96,15 +80,7 @@ const InstagramGallery = () => {
     };
   }, [posts, slidesPerView]);
 
-  if (loading) {
-    return (
-      <section className="py-12">
-        <div className="container">
-          <SectionTitle title="Follow Us on Instagram" paragraph="Loading..." center width="500px" />
-        </div>
-      </section>
-    );
-  }
+  
 
   const scrollBy = (direction: "prev" | "next") => {
     const container = containerRef.current;
@@ -151,7 +127,7 @@ const InstagramGallery = () => {
           {/* Scroll container */}
           <div
             ref={containerRef}
-            className="no-scrollbar mt-2 flex gap-4 overflow-x-auto scroll-smooth px-4 py-4 touch-pan-x snap-x snap-mandatory"
+            className="no-scrollbar mt-2 flex gap-4 overflow-x-auto scroll-smooth px-4 py-4 touch-pan-y snap-x snap-mandatory"
             onMouseEnter={() => { if (autoplayRef.current) window.clearInterval(autoplayRef.current); }}
             onMouseLeave={() => {
               if (autoplayRef.current) window.clearInterval(autoplayRef.current);

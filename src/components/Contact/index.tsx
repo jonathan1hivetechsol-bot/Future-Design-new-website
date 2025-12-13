@@ -78,6 +78,7 @@ const Contact = () => {
                         Your Name
                       </label>
                       <input
+                        id="name"
                         type="text"
                         name="name"
                         value={form.name}
@@ -96,6 +97,7 @@ const Contact = () => {
                         Your Email
                       </label>
                       <input
+                        id="email"
                         type="email"
                         name="email"
                         value={form.email}
@@ -114,6 +116,7 @@ const Contact = () => {
                         Project Type
                       </label>
                       <input
+                        id="project"
                         type="text"
                         name="project"
                         value={form.project}
@@ -132,6 +135,7 @@ const Contact = () => {
                         Project Area (Sq.Ft)
                       </label>
                       <input
+                        id="area"
                         type="number"
                         name="area"
                         value={form.area}
@@ -150,6 +154,7 @@ const Contact = () => {
                         Tell us about your tile preferences and budget
                       </label>
                       <textarea
+                        id="message"
                         name="message"
                         value={form.message}
                         onChange={handleChange}
@@ -162,7 +167,7 @@ const Contact = () => {
                   <div className="w-full px-4">
                     <button
                       type="submit"
-                      className="rounded-xs bg-primary px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 dark:shadow-submit-dark"
+                      className="block w-full rounded-xs bg-primary px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 dark:shadow-submit-dark md:inline-block md:w-auto text-center"
                       disabled={loading}
                     >
                       {loading ? "Sending..." : "Get Free Consultation"}

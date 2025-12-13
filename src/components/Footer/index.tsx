@@ -17,7 +17,7 @@ const Footer = () => {
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-5/12">
-              <div className="mb-12 max-w-[360px] lg:mb-16">
+              <div className="mb-12 lg:mb-16 max-w-full lg:max-w-[360px]">
                 <Link href="/" className="mb-8 inline-block">
                   <Image
                     src="/images/logo/logo-2.svg"
@@ -37,7 +37,7 @@ const Footer = () => {
                 <p className="mb-9 text-base leading-relaxed text-body-color dark:text-body-color-dark">
                   Future Designz provides premium tiles and bathroom fixtures imported from Europe. Established in 2011, we offer the finest quality products with expert guidance.
                 </p>
-                <div className="flex items-center">
+                <div className="flex flex-wrap items-center gap-3">
                   <a
                     href="https://www.facebook.com/Fd.futuredesignz"
                     aria-label="social-link"
@@ -216,7 +216,7 @@ const Footer = () => {
             </p>
           </div>
         </div>
-        <div className="absolute right-0 top-14 z-[-1]">
+        <div className="absolute right-0 top-14 z-[-1] hidden md:block">
           <svg
             width="55"
             height="99"
@@ -290,7 +290,7 @@ const Footer = () => {
             </defs>
           </svg>
         </div>
-        <div className="absolute bottom-24 left-0 z-[-1]">
+        <div className="absolute bottom-24 left-0 z-[-1] hidden md:block">
           <svg
             width="79"
             height="94"

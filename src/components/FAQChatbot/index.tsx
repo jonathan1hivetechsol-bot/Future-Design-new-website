@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { faqData } from "./data";
 
 export default function FAQChatbot() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [viewportWidth, setViewportWidth] = useState<number>(typeof window !== "undefined" ? window.innerWidth : 1024);
 
   const suggestions = useMemo(() => {
     if (!query) return faqData.slice(0, 6);
@@ -14,13 +16,37 @@ export default function FAQChatbot() {
     return faqData.filter((f) => f.q.toLowerCase().includes(q) || f.a.toLowerCase().includes(q)).slice(0, 8);
   }, [query]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const handleResize = () => {
+      setViewportWidth(window.innerWidth);
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // add a class to body when chat is open so other fixed buttons can react
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    if (open) {
+      document.body.classList.add("faq-open");
+    } else {
+      document.body.classList.remove("faq-open");
+    }
+    return () => document.body.classList.remove("faq-open");
+  }, [open]);
+
   return (
     <div>
       {/* Floating button (right bottom, above WhatsApp) */}
-      <div style={{ position: "fixed", right: 20, bottom: 152, zIndex: 80 }}>
+      {/* leave room for WhatsApp (bottom 84) + button height (56) + 12px gap on mobile */}
+      <div style={{ position: "fixed", right: isMobile ? 12 : 20, bottom: isMobile ? 152 : 152, zIndex: 80 }}>
         <button
           onClick={() => setOpen((s) => !s)}
           aria-label="Open help chat"
+          aria-expanded={open}
           className="flex items-center justify-center"
           style={{
             width: 56,
@@ -39,15 +65,17 @@ export default function FAQChatbot() {
       </div>
 
       {/* Panel */}
-      {open && (
+        {open && (
         <div
           role="dialog"
           aria-label="FAQ chatbot"
           style={{
             position: "fixed",
-            right: 20,
-            bottom: 220,
-            width: 380,
+            right: isMobile ? 12 : 20,
+            left: isMobile ? 12 : "auto",
+            /* place panel above chat button and WhatsApp: use 220 on mobile to avoid overlap */
+            bottom: isMobile ? 220 : 220,
+            width: isMobile ? "calc(100% - 24px)" : 380,
             maxWidth: "calc(100vw - 48px)",
             zIndex: 82,
             boxShadow: "0 20px 50px rgba(2,6,23,0.18)",

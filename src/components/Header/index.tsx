@@ -16,15 +16,17 @@ const Header = () => {
   // Sticky Navbar
   const [sticky, setSticky] = useState(false);
   const handleStickyNavbar = () => {
-    if (window.scrollY >= 80) {
+    if (typeof window !== "undefined" && window.scrollY >= 80) {
       setSticky(true);
     } else {
       setSticky(false);
     }
   };
   useEffect(() => {
+    if (typeof window === "undefined") return;
     window.addEventListener("scroll", handleStickyNavbar);
-  });
+    return () => window.removeEventListener("scroll", handleStickyNavbar);
+  }, []);
 
   // submenu handler
   const [openIndex, setOpenIndex] = useState(-1);
@@ -49,7 +51,7 @@ const Header = () => {
       >
         <div className="container">
           <div className="relative -mx-4 flex items-center justify-between">
-            <div className="w-60 max-w-full px-4 xl:mr-12">
+            <div className="w-auto max-w-full px-4 xl:mr-12 flex-shrink-0">
               <Link
                 href="/"
                 className={`header-logo block w-full ${
@@ -78,6 +80,7 @@ const Header = () => {
                   onClick={navbarToggleHandler}
                   id="navbarToggler"
                   aria-label="Mobile Menu"
+                  aria-expanded={navbarOpen}
                   className="ring-primary absolute top-1/2 right-4 block translate-y-[-50%] rounded-lg px-3 py-[6px] focus:ring-2 lg:hidden"
                 >
                   <span

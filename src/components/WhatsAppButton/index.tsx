@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // Use the user's WhatsApp number by default; will fall back to env var if provided
 const defaultNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "+923457777799";
@@ -13,6 +13,26 @@ export default function WhatsAppButton({
   phone?: string;
   message?: string;
 }) {
+  const [hiddenDueToFAQ, setHiddenDueToFAQ] = useState(false);
+
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    const check = () => {
+      const isFaqOpen = document.body.classList.contains("faq-open");
+      // hide on mobile only when faq open
+      setHiddenDueToFAQ(isFaqOpen && window.innerWidth < 768);
+    };
+    check();
+    window.addEventListener("resize", check, { passive: true });
+    const observer = new MutationObserver(check);
+    observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+    return () => {
+      window.removeEventListener("resize", check);
+      observer.disconnect();
+    };
+  }, []);
+
+  if (hiddenDueToFAQ) return null;
   const safePhone = phone.replace(/[^0-9+]/g, "");
   const href = `https://wa.me/${encodeURIComponent(safePhone)}?text=${encodeURIComponent(
     message

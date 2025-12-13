@@ -3,14 +3,14 @@ import { Blog } from "@/types/blog";
 const blogData: Blog[] = [
   {
     id: 1,
-    title: "Designing High-Converting Landing Pages in 2025",
+    title: "Transform Your Home with Premium Imported Tiles",
     paragraph:
-      "Practical tips to design landing pages that increase conversions — from messaging and hierarchy to microcopy and CTAs.",
+      "Tiles play a major role in shaping the personality of any space, and at Future Designz, we believe in offering only the best.",
     image: "/images/blog/post-01.jpg",
     author: {
       name: "Future Designz",
       image: "/images/logo/logo.svg",
-      designation: "Design Agency",
+      designation: "Tiles Showroom",
     },
     tags: ["design", "conversion"],
     publishDate: "12 Feb 2025",
@@ -24,7 +24,7 @@ const blogData: Blog[] = [
     author: {
       name: "Future Designz",
       image: "/images/logo/logo.svg",
-      designation: "Design Agency",
+      designation: "Tiles Showroom",
     },
     tags: ["branding", "startup"],
     publishDate: "01 Mar 2025",
@@ -38,7 +38,7 @@ const blogData: Blog[] = [
     author: {
       name: "Future Designz",
       image: "/images/logo/logo.svg",
-      designation: "Design Agency",
+      designation: "Tiles Showroom",
     },
     tags: ["development", "performance"],
     publishDate: "18 Apr 2025",

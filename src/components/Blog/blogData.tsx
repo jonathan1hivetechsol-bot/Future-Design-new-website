@@ -3,45 +3,45 @@ import { Blog } from "@/types/blog";
 const blogData: Blog[] = [
   {
     id: 1,
-    title: "Transform Your Home with Premium Imported Tiles",
+    title: "Choosing the Right Tiles: A Buyer's Guide for Lasting Style",
     paragraph:
-      "Tiles play a major role in shaping the personality of any space, and at Future Designz, we believe in offering only the best.",
-    image: "/images/blog/post-01.jpg",
+      "Choosing the right tiles is essential for both form and function. Premium ceramic and porcelain tiles elevate aesthetics while offering durability and easy maintenance. At Future Designz we curate collections that balance lasting performance with refined design.",
+    image: "/images/blog/blog 1.jpg",
     author: {
       name: "Future Designz",
       image: "/images/logo/logo.svg",
       designation: "Tiles Showroom",
     },
     tags: ["design", "conversion"],
-    publishDate: "12 Feb 2025",
+    publishDate: "12 Jan 2024",
   },
   {
     id: 2,
-    title: "Branding Essentials for Early-Stage Startups",
+    title: "Selecting Bathroom Fixtures: Balance Style & Performance",
     paragraph:
-      "How to build a memorable brand on a budget: naming, visual identity, voice, and where to invest first.",
-    image: "/images/blog/post-02.jpg",
+      "From faucets to shower systems, choosing the right bathroom fixtures blends aesthetics with performance. Consider water efficiency, finish durability, and coordination with tile and cabinetry to achieve a cohesive, long-lasting design.",
+    image: "/images/blog/blog 2.webp",
     author: {
       name: "Future Designz",
       image: "/images/logo/logo.svg",
-      designation: "Tiles Showroom",
+      designation: "Tiles & Fixtures",
     },
-    tags: ["branding", "startup"],
-    publishDate: "01 Mar 2025",
+    tags: ["fixtures", "design"],
+    publishDate: "01 Mar 2024",
   },
   {
     id: 3,
-    title: "Next.js Performance Tips: Faster Sites with Less Work",
+    title: "Tile Maintenance: Keep Your Surfaces Looking Like New",
     paragraph:
-      "A practical checklist to speed up Next.js apps: image optimization, code-splitting, ISR, and smart caching strategies.",
-    image: "/images/blog/post-03.jpg",
+      "Proper care extends the life of your tiles. We cover cleaning methods, grout sealing, stain prevention, and routine checks to maintain beauty and performance in kitchens, bathrooms, and floors.",
+    image: "/images/blog/blog 3.jpg",
     author: {
       name: "Future Designz",
       image: "/images/logo/logo.svg",
-      designation: "Tiles Showroom",
+      designation: "Aftercare & Service",
     },
-    tags: ["development", "performance"],
-    publishDate: "18 Apr 2025",
+    tags: ["maintenance", "tiles"],
+    publishDate: "18 Apr 2024",
   },
 ];
 

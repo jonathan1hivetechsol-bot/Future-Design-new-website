@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import SectionTitle from "../Common/SectionTitle";
 
-const Projects = () => {
+const Projects = ({ mode = "slider" }: { mode?: "slider" | "full" }) => {
   const [openImage, setOpenImage] = useState<string | null>(null);
 
   useEffect(() => {
@@ -41,15 +41,40 @@ const Projects = () => {
           mb="50px"
         />
 
-        {/* Desktop / Tablet: horizontal slider. Mobile: show first 3 with View More */}
-        <ProjectsSlider
-          projects={projects}
-          onOpenImage={(src: string) => setOpenImage(src)}
-        />
+        {/* Render slider on homepage (mode="slider"). Render full grid on projects page (mode="full"). */}
+        {mode === "slider" ? (
+          <ProjectsSlider
+            projects={projects}
+            onOpenImage={(src: string) => setOpenImage(src)}
+          />
+        ) : (
+          <div>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {projects.map((project) => (
+                <div key={project.id} className="h-full">
+                  <div className="group relative flex h-full flex-col overflow-hidden rounded-lg shadow-lg border border-transparent hover:border-red-500 transition">
+                    <div className="relative h-64 w-full overflow-hidden bg-gray-200 dark:bg-gray-700">
+                      <button onClick={() => setOpenImage(project.image)} className="block relative h-full w-full p-0 m-0 text-left" aria-label={`Open ${project.title} image`}>
+                        <Image src={project.image} alt={project.title} fill className="object-cover" />
+                      </button>
+                    </div>
+                    <div className="p-4 flex flex-col flex-1 bg-white dark:bg-gray-800">
+                      {!/—\s*Project\s*\d+/i.test(project.title) && (
+                        <h3 className="mb-1 text-lg font-semibold text-black dark:text-white">{project.title}</h3>
+                      )}
+                      <span className="text-xs text-primary font-medium mb-2">Project #{project.id}</span>
+                      <p className="text-sm text-body-color dark:text-body-color-dark mb-4">{project.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
         {/* Image Lightbox Modal */}
         {openImage && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 px-4"
+            className="fixed inset-0 z-[99999] flex items-center justify-center bg-black bg-opacity-90 px-4"
             onClick={(e) => {
               // close when clicking on overlay (but not when clicking the image)
               if (e.target === e.currentTarget) setOpenImage(null);
@@ -68,7 +93,7 @@ const Projects = () => {
               <img
                 src={openImage}
                 alt="Project full"
-                className="mx-auto max-h-[90vh] w-auto rounded-md object-contain shadow-lg"
+                className="mx-auto max-h-[98vh] w-auto rounded-md object-contain shadow-lg"
               />
             </div>
           </div>

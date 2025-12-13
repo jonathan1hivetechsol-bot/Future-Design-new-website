@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const WelcomePopup = () => {
   const [show, setShow] = useState(false);
@@ -17,7 +18,7 @@ const WelcomePopup = () => {
   useEffect(() => {
     if (!show) return;
     let i = 0;
-    const speed = 55;
+    const speed = 45;
     const type = () => {
       if (i <= fullText.length) {
         setDisplayedText(fullText.slice(0, i));
@@ -26,46 +27,61 @@ const WelcomePopup = () => {
       }
     };
     type();
-    // Auto-dismiss after 3.5s
-    const timer = setTimeout(() => setShow(false), 3500);
+    // Auto-dismiss after 5s
+    const timer = setTimeout(() => setShow(false), 5000);
     return () => clearTimeout(timer);
   }, [show]);
 
   if (!show) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none font-sans">
+    <div className="fixed inset-0 z-[99999] flex items-center justify-center px-4 font-sans">
       <div
-        className="backdrop-blur-xl bg-white/80 border-2 border-transparent rounded-2xl px-12 py-10 min-w-[400px] max-w-md flex flex-col items-center animate-welPop pointer-events-auto shadow-2xl"
-        style={{
-          borderImage: 'linear-gradient(135deg, #e11d48 10%, #fff 60%, #111 100%) 1',
-          boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)',
-        }}
+        className="relative w-full max-w-lg rounded-3xl bg-gradient-to-br from-white/95 to-gray-50/80 shadow-2xl ring-1 ring-gray-200 backdrop-blur-sm p-6 md:p-8 animate-welPop"
+        role="dialog"
+        aria-modal="true"
       >
-        <div className="mb-3 flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-tr from-red-500 via-white to-black shadow-lg overflow-hidden">
-          <Image
-            src="/images/about/about%20us%20section%20image.jpg"
-            alt="About Us"
-            width={64}
-            height={64}
-            className="object-cover w-16 h-16 rounded-full"
-            priority
-          />
+        <button
+          onClick={() => setShow(false)}
+          aria-label="Close welcome"
+          className="absolute right-3 top-3 z-10 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-white/60 text-gray-700 hover:bg-white shadow"
+        >
+          ×
+        </button>
+
+        <div className="flex items-center gap-4">
+          <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl shadow-md">
+            <Image
+              src="/images/about/about%20us%20section%20image.jpg"
+              alt="About Us"
+              width={80}
+              height={80}
+              className="object-cover w-full h-full"
+              priority
+            />
+          </div>
+
+          <div className="flex-1">
+            <h3 className="text-lg font-extrabold text-gray-900">Welcome to Future Designz</h3>
+            <p className="mt-1 text-sm text-gray-600">{displayedText}</p>
+
+            <div className="mt-4 flex flex-wrap items-center gap-3">
+              <Link href="/projects" className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white shadow hover:bg-primary/95">Explore Collections</Link>
+              <a href="#contact" className="inline-flex items-center rounded-md border px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Contact Us</a>
+            </div>
+          </div>
         </div>
-        <div className="text-xl font-extrabold text-gray-900 mb-1 tracking-tight drop-shadow-sm" style={{fontFamily: 'Inter, Segoe UI, Arial, sans-serif'}}>Welcome</div>
-        <div className="text-base font-semibold text-red-600 text-center min-h-[2.2em] tracking-wide drop-shadow-sm" style={{fontFamily: 'Inter, Segoe UI, Arial, sans-serif'}}>
-          {displayedText}
-        </div>
-      </div>
+      
       <style jsx>{`
         .animate-welPop {
-          animation: welPop 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+          animation: welPop 0.6s cubic-bezier(0.22, 1, 0.36, 1);
         }
         @keyframes welPop {
-          0% { transform: scale(0.7) translateY(30px); opacity: 0; }
-          100% { transform: scale(1) translateY(0); opacity: 1; }
+          0% { transform: translateY(12px) scale(.98); opacity: 0 }
+          100% { transform: translateY(0) scale(1); opacity: 1 }
         }
       `}</style>
+      </div>
     </div>
   );
 };

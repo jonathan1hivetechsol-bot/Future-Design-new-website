@@ -27,7 +27,7 @@ const demoAreas = [
 
 export default function OrderStrip({
   intervalMs = 10000,
-  showMs = 1500,
+  showMs = 2000,
 }: {
   intervalMs?: number;
   showMs?: number;

@@ -99,6 +99,15 @@ const Header = () => {
                     }`}
                   />
                 </button>
+                {/* backdrop to prevent overlap and close on outside click (mobile only) */}
+                {navbarOpen && (
+                  <div
+                    onClick={() => setNavbarOpen(false)}
+                    className="fixed inset-0 z-20 lg:hidden"
+                    aria-hidden
+                  />
+                )}
+
                 <nav
                   id="navbarCollapse"
                   className={`navbar border-body-color/50 dark:border-body-color/20 dark:bg-dark absolute right-0 z-30 w-[250px] rounded border-[.5px] bg-white px-6 py-4 duration-300 lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 lg:opacity-100 ${
@@ -113,6 +122,7 @@ const Header = () => {
                         {menuItem.path ? (
                           <Link
                             href={menuItem.path}
+                            onClick={() => setNavbarOpen(false)}
                             className={`flex py-2 text-base lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${
                               usePathName === menuItem.path
                                 ? "text-primary dark:text-white"
@@ -148,6 +158,7 @@ const Header = () => {
                                 <Link
                                   href={submenuItem.path}
                                   key={index}
+                                  onClick={() => setNavbarOpen(false)}
                                   className="text-dark hover:text-primary block rounded-sm py-2.5 text-sm lg:px-3 dark:text-white/70 dark:hover:text-white"
                                 >
                                   {submenuItem.title}

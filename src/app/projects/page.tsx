@@ -14,7 +14,7 @@ const ProjectsPage = () => {
         pageName="Our Projects"
         description="Explore our collection of completed projects showcasing premium tile installations and design work."
       />
-      <Projects />
+      <Projects mode="full" />
     </>
   );
 };

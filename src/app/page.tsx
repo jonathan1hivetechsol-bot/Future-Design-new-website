@@ -33,7 +33,7 @@ export default function Home() {
       <Brands />
       <AboutSectionOne />
       <AboutSectionTwo />
-      <Projects />
+      <Projects mode="slider" />
       <Testimonials />
       <Blog />
       <Contact />

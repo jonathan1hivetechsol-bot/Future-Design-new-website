@@ -21,7 +21,7 @@ const testimonialData: Testimonial[] = [
     content:
       "Working with Future Designz has been a pleasure. Their extensive collection and expert advice make them the perfect partner for all my tile design projects.",
     image: "/images/testimonials/auth-02.png",
-    star: 5,
+    star: 4,
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const testimonialData: Testimonial[] = [
     content:
       "The premium quality and competitive pricing at Future Designz are unmatched. My clients love the beautiful spaces we create using their tiles and fixtures.",
     image: "/images/testimonials/auth-03.png",
-    star: 5,
+    star: 3,
   },
 ];
 
@@ -51,9 +51,11 @@ const Testimonials = () => {
           center
         />
 
-        <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
+        <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
           {testimonialData.map((testimonial) => (
-            <SingleTestimonial key={testimonial.id} testimonial={testimonial} />
+            <div key={testimonial.id} className="w-full h-full flex">
+              <SingleTestimonial testimonial={testimonial} />
+            </div>
           ))}
         </div>
       </div>

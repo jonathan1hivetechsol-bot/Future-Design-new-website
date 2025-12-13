@@ -19,6 +19,7 @@ const fadeUp = {
 const AboutUsSection = () => {
   const [showMore, setShowMore] = useState(false);
   return (
+    <>
     <motion.section
       className="py-16 md:py-24 lg:py-32 bg-white dark:bg-gray-dark"
       initial="hidden"
@@ -99,47 +100,69 @@ const AboutUsSection = () => {
       </div>
     </motion.section>
 
-    {/* New: Our Process section */}
-    <section className="py-12 bg-gray-50 dark:bg-gray-900">
+    {/* New: Our Process section (enhanced) */}
+    <section className="py-14 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-900">
       <div className="container">
-        <div className="text-center mb-8">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white">Our Process</h3>
-          <p className="mt-2 text-body-color max-w-2xl mx-auto">A simple, transparent process that makes your project smooth from concept to completion.</p>
+        <div className="text-center mb-10">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Our Process</h3>
+          <p className="mt-3 text-body-color max-w-3xl mx-auto">A simple, transparent process that brings your project to life — thoughtfully planned and professionally executed.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow-sm flex flex-col items-start">
-            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-md bg-red-100 text-red-600">
-              <svg width="20" height="20" viewBox="0 0 24 24" className="fill-current">
-                <path d="M3 12l2-2 4 4 8-8 2 2-10 10z" />
-              </svg>
-            </div>
-            <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">Consultation</h4>
-            <p className="text-sm text-body-color">We discuss your vision, space and budget to create a tailored plan.</p>
+        <div className="relative">
+          {/* connector line for desktop */}
+          <div className="hidden md:block absolute inset-x-0 top-1/2 -z-0">
+            <div className="mx-auto w-3/4 h-px bg-gradient-to-r from-red-200 via-red-300 to-red-200 opacity-40" />
           </div>
 
-          <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow-sm flex flex-col items-start">
-            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-md bg-yellow-100 text-yellow-600">
-              <svg width="20" height="20" viewBox="0 0 24 24" className="fill-current">
-                <path d="M12 2l4 7h6l-5 4 2 7-6-4-6 4 2-7-5-4h6z" />
-              </svg>
-            </div>
-            <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">Design & Selection</h4>
-            <p className="text-sm text-body-color">Choose tiles, fixtures and finishes with expert guidance and samples.</p>
-          </div>
-
-          <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow-sm flex flex-col items-start">
-            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-md bg-green-100 text-green-600">
-              <svg width="20" height="20" viewBox="0 0 24 24" className="fill-current">
-                <path d="M21 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7h18zM3 5h18V4a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v1z" />
-              </svg>
-            </div>
-            <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">Install & Support</h4>
-            <p className="text-sm text-body-color">Professional installation and post-install support for long-lasting results.</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                id: 1,
+                title: 'Consultation',
+                text: 'We begin with a detailed consultation to understand your vision, space, and budget.',
+                color: 'from-red-100 to-red-50',
+                icon: (<path d="M3 12l2-2 4 4 8-8 2 2-10 10z" />),
+              },
+              {
+                id: 2,
+                title: 'Design & Selection',
+                text: 'Select curated tiles and fixtures with the help of samples, mockups and expert guidance.',
+                color: 'from-yellow-100 to-yellow-50',
+                icon: (<path d="M12 2l4 7h6l-5 4 2 7-6-4-6 4 2-7-5-4h6z" />),
+              },
+              {
+                id: 3,
+                title: 'Install & Support',
+                text: 'Professional installation, quality checks and ongoing support to ensure lasting results.',
+                color: 'from-green-100 to-green-50',
+                icon: (<path d="M21 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7h18zM3 5h18V4a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v1z" />),
+              },
+            ].map((step) => (
+              <div key={step.id} className="relative z-10">
+                <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md transform transition hover:-translate-y-3 hover:shadow-lg h-full flex flex-col">
+                  <div className="flex items-center gap-4">
+                    <div className={`flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br ${step.color} text-white shadow-sm flex-shrink-0`}>                      
+                      <svg width="28" height="28" viewBox="0 0 24 24" className="fill-current text-gray-800 dark:text-white">
+                        {step.icon}
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="text-sm font-semibold text-gray-700 dark:text-gray-200">Step {step.id}</div>
+                      <h4 className="text-lg font-bold text-gray-900 dark:text-white">{step.title}</h4>
+                    </div>
+                  </div>
+                  <p className="mt-4 text-sm text-body-color flex-1">{step.text}</p>
+                  <div className="mt-4 text-right">
+                    <a href="/projects" className="inline-block text-sm font-medium text-red-600 hover:underline">See examples →</a>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
     </section>
+    </>
 
   );
 };

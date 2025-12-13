@@ -98,6 +98,49 @@ const AboutUsSection = () => {
         </motion.div>
       </div>
     </motion.section>
+
+    {/* New: Our Process section */}
+    <section className="py-12 bg-gray-50 dark:bg-gray-900">
+      <div className="container">
+        <div className="text-center mb-8">
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white">Our Process</h3>
+          <p className="mt-2 text-body-color max-w-2xl mx-auto">A simple, transparent process that makes your project smooth from concept to completion.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow-sm flex flex-col items-start">
+            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-md bg-red-100 text-red-600">
+              <svg width="20" height="20" viewBox="0 0 24 24" className="fill-current">
+                <path d="M3 12l2-2 4 4 8-8 2 2-10 10z" />
+              </svg>
+            </div>
+            <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">Consultation</h4>
+            <p className="text-sm text-body-color">We discuss your vision, space and budget to create a tailored plan.</p>
+          </div>
+
+          <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow-sm flex flex-col items-start">
+            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-md bg-yellow-100 text-yellow-600">
+              <svg width="20" height="20" viewBox="0 0 24 24" className="fill-current">
+                <path d="M12 2l4 7h6l-5 4 2 7-6-4-6 4 2-7-5-4h6z" />
+              </svg>
+            </div>
+            <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">Design & Selection</h4>
+            <p className="text-sm text-body-color">Choose tiles, fixtures and finishes with expert guidance and samples.</p>
+          </div>
+
+          <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow-sm flex flex-col items-start">
+            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-md bg-green-100 text-green-600">
+              <svg width="20" height="20" viewBox="0 0 24 24" className="fill-current">
+                <path d="M21 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7h18zM3 5h18V4a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v1z" />
+              </svg>
+            </div>
+            <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">Install & Support</h4>
+            <p className="text-sm text-body-color">Professional installation and post-install support for long-lasting results.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
   );
 };
 

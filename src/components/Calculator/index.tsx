@@ -433,10 +433,18 @@ export default function Calculator() {
             </div>
           </div>
 
-          <div className="mt-4 flex gap-2">
-            <button onClick={() => { const cost = calculateCost(); if (cost) alert(`Grand total: ${cost.grandTotal}`); }} className="px-3 py-2 bg-white dark:bg-gray-700 text-primary dark:text-white rounded">Quick Cost</button>
-            <button onClick={exportToCSV} className="px-3 py-2 bg-white dark:bg-gray-700 text-primary dark:text-white rounded">Export CSV</button>
-            <button onClick={shareCalculation} className="px-3 py-2 bg-white dark:bg-gray-700 text-primary dark:text-white rounded">Share</button>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <button
+              onClick={() => {
+                const cost = calculateCost();
+                if (cost) alert(`Grand total: ${cost.grandTotal}`);
+              }}
+              className="w-full xs:w-1/2 sm:w-auto px-3 py-2 text-sm sm:text-base bg-white dark:bg-gray-700 text-primary dark:text-white rounded text-center"
+            >
+              Quick Cost
+            </button>
+            <button onClick={exportToCSV} className="w-full xs:w-1/2 sm:w-auto px-3 py-2 text-sm sm:text-base bg-white dark:bg-gray-700 text-primary dark:text-white rounded text-center">Export CSV</button>
+            <button onClick={shareCalculation} className="w-full xs:w-1/2 sm:w-auto px-3 py-2 text-sm sm:text-base bg-white dark:bg-gray-700 text-primary dark:text-white rounded text-center">Share</button>
           </div>
         </div>
       )}

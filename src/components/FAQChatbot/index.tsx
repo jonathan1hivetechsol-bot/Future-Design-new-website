@@ -9,6 +9,8 @@ export default function FAQChatbot() {
   const [selected, setSelected] = useState<number | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [viewportWidth, setViewportWidth] = useState<number>(typeof window !== "undefined" ? window.innerWidth : 1024);
+  const isXs = viewportWidth < 360;
+  const isSm = viewportWidth < 420;
 
   const suggestions = useMemo(() => {
     if (!query) return faqData.slice(0, 6);
@@ -42,15 +44,15 @@ export default function FAQChatbot() {
     <div>
       {/* Floating button (right bottom, above WhatsApp) */}
       {/* leave room for WhatsApp (bottom 84) + button height (56) + 12px gap on mobile */}
-      <div style={{ position: "fixed", right: isMobile ? 12 : 20, bottom: isMobile ? 152 : 152, zIndex: 80 }}>
+      <div style={{ position: "fixed", right: isMobile ? (isXs ? 8 : 12) : 20, bottom: isMobile ? (isXs ? 140 : 152) : 152, zIndex: 80 }}>
         <button
           onClick={() => setOpen((s) => !s)}
           aria-label="Open help chat"
           aria-expanded={open}
           className="flex items-center justify-center"
-          style={{
-            width: 56,
-            height: 56,
+            style={{
+            width: isXs ? 44 : 56,
+            height: isXs ? 44 : 56,
             borderRadius: 9999,
             background: "linear-gradient(180deg,#2563eb,#004aad)",
             color: "#fff",
@@ -72,11 +74,11 @@ export default function FAQChatbot() {
           style={{
             position: "fixed",
             right: isMobile ? 12 : 20,
-            left: isMobile ? 12 : "auto",
+            left: isMobile ? (isXs ? 8 : 12) : "auto",
             /* place panel above chat button and WhatsApp: use 220 on mobile to avoid overlap */
-            bottom: isMobile ? 220 : 220,
-            width: isMobile ? "calc(100% - 24px)" : 380,
-            maxWidth: "calc(100vw - 48px)",
+            bottom: isMobile ? (isXs ? 180 : 220) : 220,
+            width: isMobile ? (isXs ? "calc(100% - 16px)" : "calc(100% - 24px)") : 380,
+            maxWidth: isSm ? "calc(100vw - 24px)" : "calc(100vw - 48px)",
             zIndex: 82,
             boxShadow: "0 20px 50px rgba(2,6,23,0.18)",
             borderRadius: 12,
@@ -95,8 +97,8 @@ export default function FAQChatbot() {
                 </svg>
               </div>
               <div>
-                <strong style={{ fontSize: 15, display: "block" }}>Help & FAQs</strong>
-                <small style={{ color: "#6b7280" }}>Quick answers and chat</small>
+                <strong style={{ fontSize: isXs ? 13 : 15, display: "block" }}>Help & FAQs</strong>
+                <small style={{ color: "#6b7280", fontSize: isXs ? 11 : 13 }}>Quick answers and chat</small>
               </div>
             </div>
             <div style={{ marginLeft: "auto", display: "flex", gap: 8 }}>
@@ -105,14 +107,14 @@ export default function FAQChatbot() {
             </div>
           </div>
 
-          <div style={{ padding: 12 }}>
+          <div style={{ padding: isXs ? 8 : 12 }}>
             <div style={{ position: "relative" }}>
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search questions..."
                 aria-label="Search questions"
-                style={{ width: "100%", padding: '10px 36px 10px 12px', borderRadius: 10, border: "1px solid #eef2ff", background: "#fbfdff" }}
+                style={{ width: "100%", padding: isXs ? '8px 32px 8px 10px' : '10px 36px 10px 12px', borderRadius: 10, border: "1px solid #eef2ff", background: "#fbfdff" }}
               />
               <svg style={{ position: "absolute", right: 10, top: 8 }} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <path d="M21 21l-4.35-4.35" stroke="#9CA3AF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -121,20 +123,20 @@ export default function FAQChatbot() {
             </div>
           </div>
 
-          <div style={{ maxHeight: 340, overflow: "auto", padding: 12, display: "grid", gap: 10 }}>
+          <div style={{ maxHeight: isXs ? 260 : 340, overflow: "auto", padding: isXs ? 8 : 12, display: "grid", gap: isXs ? 8 : 10 }}>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               {suggestions.slice(0, 6).map((s, i) => (
                 <button
                   key={i}
                   onClick={() => setSelected(faqData.indexOf(s))}
                   style={{
-                    padding: "8px 12px",
+                    padding: isXs ? "6px 10px" : "8px 12px",
                     borderRadius: 9999,
                     background: "#eef2ff",
                     border: "none",
                     cursor: "pointer",
                     color: "#1e3a8a",
-                    fontSize: 13,
+                    fontSize: isXs ? 12 : 13,
                   }}
                 >
                   {s.q}

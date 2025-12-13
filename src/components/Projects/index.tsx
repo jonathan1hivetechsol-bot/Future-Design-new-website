@@ -107,10 +107,10 @@ function ProjectsSlider({ projects, onOpenImage }: { projects: any[]; onOpenImag
       <div>
         <div className="grid grid-cols-3 gap-4">
           {firstThree.map((project) => (
-            <div key={project.id} className="overflow-hidden rounded-lg shadow-lg transform transition-transform duration-300 hover:-translate-y-3 hover:shadow-feature-2 hover:z-20 border-2 border-red-500 opacity-100 dark:opacity-100">
-              <div className="relative h-28 w-full overflow-hidden bg-gray-200 dark:bg-gray-700">
-                <button onClick={() => onOpenImage(project.image)} className="block h-full w-full p-0 m-0 text-left" aria-label={`Open ${project.title} image`}>
-                  <Image src={project.image} alt={project.title} fill className="object-cover" />
+            <div key={project.id} className="group relative overflow-visible rounded-lg shadow-lg transform transition duration-300 hover:-translate-y-3 hover:shadow-feature-2 hover:z-30 border-2 border-red-500 opacity-100 dark:opacity-100">
+              <div className="relative h-28 w-full overflow-visible bg-gray-200 dark:bg-gray-700">
+                <button onClick={() => onOpenImage(project.image)} className="block relative h-full w-full p-0 m-0 text-left z-10" aria-label={`Open ${project.title} image`}>
+                  <Image src={project.image} alt={project.title} fill className="object-cover transition-transform duration-300 transform group-hover:-translate-y-4 group-hover:scale-105" />
                 </button>
               </div>
             </div>
@@ -129,10 +129,10 @@ function ProjectsSlider({ projects, onOpenImage }: { projects: any[]; onOpenImag
         <div ref={containerRef} className="flex gap-6 overflow-x-auto no-scrollbar py-4 px-1">
           {projects.map((project) => (
             <div key={project.id} className="min-w-[280px] max-w-[320px] flex-shrink-0">
-              <div className="overflow-hidden rounded-lg shadow-lg transform transition-transform duration-300 hover:-translate-y-3 hover:shadow-feature-2 hover:z-20 border-2 border-red-500 opacity-100 dark:opacity-100">
-                <div className="relative h-64 w-full overflow-hidden bg-gray-200 dark:bg-gray-700">
-                  <button onClick={() => onOpenImage(project.image)} className="block h-full w-full p-0 m-0 text-left" aria-label={`Open ${project.title} image`}>
-                    <Image src={project.image} alt={project.title} fill className="object-cover transition-transform duration-300 hover:scale-110" />
+              <div className="group relative overflow-visible rounded-lg shadow-lg transform transition duration-300 hover:-translate-y-3 hover:shadow-feature-2 hover:z-30 border-2 border-red-500 opacity-100 dark:opacity-100">
+                <div className="relative h-64 w-full overflow-visible bg-gray-200 dark:bg-gray-700">
+                  <button onClick={() => onOpenImage(project.image)} className="block relative h-full w-full p-0 m-0 text-left z-10" aria-label={`Open ${project.title} image`}>
+                    <Image src={project.image} alt={project.title} fill className="object-cover transition-transform duration-300 transform group-hover:-translate-y-6 group-hover:scale-105" />
                   </button>
                 </div>
                 <div className="bg-white p-4 dark:bg-gray-800 opacity-100 dark:opacity-100">

@@ -121,28 +121,31 @@ const AboutUsSection = () => {
                 title: 'Consultation',
                 text: 'We begin with a detailed consultation to understand your vision, space, and budget.',
                 color: 'from-red-100 to-red-50',
-                icon: (<path d="M3 12l2-2 4 4 8-8 2 2-10 10z" />),
+                darkColor: 'dark:from-red-600 dark:to-red-500',
+                icon: (<path fill="currentColor" d="M3 12l2-2 4 4 8-8 2 2-10 10z" />),
               },
               {
                 id: 2,
                 title: 'Design & Selection',
                 text: 'Select curated tiles and fixtures with the help of samples, mockups and expert guidance.',
                 color: 'from-yellow-100 to-yellow-50',
-                icon: (<path d="M12 2l4 7h6l-5 4 2 7-6-4-6 4 2-7-5-4h6z" />),
+                darkColor: 'dark:from-yellow-500 dark:to-yellow-400',
+                icon: (<path fill="currentColor" d="M12 2l4 7h6l-5 4 2 7-6-4-6 4 2-7-5-4h6z" />),
               },
               {
                 id: 3,
                 title: 'Install & Support',
                 text: 'Professional installation, quality checks and ongoing support to ensure lasting results.',
                 color: 'from-green-100 to-green-50',
-                icon: (<path d="M21 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7h18zM3 5h18V4a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v1z" />),
+                darkColor: 'dark:from-emerald-600 dark:to-emerald-500',
+                icon: (<path fill="currentColor" d="M21 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7h18zM3 5h18V4a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v1z" />),
               },
             ].map((step) => (
               <div key={step.id} className="relative z-10">
                 <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 border border-gray-100 dark:border-gray-800 shadow-md transform transition hover:-translate-y-2 hover:shadow-lg h-full flex flex-col">
                   <div className="flex items-center gap-4">
-                    <div className={`flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br ${step.color} text-white shadow-sm flex-shrink-0`}>                      
-                      <svg width="28" height="28" viewBox="0 0 24 24" className="fill-current text-white">
+                    <div className={`flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br ${step.color} ${step.darkColor} text-white shadow-sm flex-shrink-0`}>                      
+                      <svg width="28" height="28" viewBox="0 0 24 24" className="fill-current text-white dark:text-white">
                         {step.icon}
                       </svg>
                     </div>

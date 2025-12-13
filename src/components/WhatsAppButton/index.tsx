@@ -14,6 +14,8 @@ export default function WhatsAppButton({
   message?: string;
 }) {
   const [hiddenDueToFAQ, setHiddenDueToFAQ] = useState(false);
+  const [size, setSize] = useState<number>(56);
+  const [svgSize, setSvgSize] = useState<number>(28);
 
   useEffect(() => {
     if (typeof document === "undefined") return;
@@ -21,6 +23,9 @@ export default function WhatsAppButton({
       const isFaqOpen = document.body.classList.contains("faq-open");
       // hide on mobile only when faq open
       setHiddenDueToFAQ(isFaqOpen && window.innerWidth < 768);
+      const newSize = window.innerWidth < 420 ? 44 : window.innerWidth < 360 ? 40 : 56;
+      setSize(newSize);
+      setSvgSize(newSize > 50 ? 28 : 20);
     };
     check();
     window.addEventListener("resize", check, { passive: true });
@@ -51,8 +56,8 @@ export default function WhatsAppButton({
       >
         <div
           style={{
-            width: 56,
-            height: 56,
+            width: size,
+            height: size,
             borderRadius: 9999,
             display: "flex",
             alignItems: "center",
@@ -65,8 +70,8 @@ export default function WhatsAppButton({
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="28"
-            height="28"
+            width={svgSize}
+            height={svgSize}
             viewBox="0 0 24 24"
             fill="none"
             aria-hidden

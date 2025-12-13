@@ -284,8 +284,9 @@ export default function Calculator() {
   }
 
   return (
-    <div className="p-6 bg-white dark:bg-gray-900 rounded-lg shadow dark:shadow-lg">
-      <div style={{ transform: `scale(${scale})`, transformOrigin: 'top center', overflow: 'visible' }}>
+    <div className="p-6 bg-white dark:bg-gray-900 rounded-lg shadow dark:shadow-lg overflow-x-hidden md:overflow-visible w-full max-w-full box-border">
+      <div style={{ transform: `scale(${scale})`, transformOrigin: 'top center', overflow: 'visible', maxWidth: '100vw', boxSizing: 'border-box', overflowX: 'hidden' }}>
+      <div className="w-full max-w-full box-border">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-2xl font-bold text-primary dark:text-white">Premium Tile Calculator Pro</h2>
         <div className="text-sm text-gray-600 dark:text-gray-300">PRO</div>
@@ -335,37 +336,39 @@ export default function Calculator() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="col-span-2">
-          <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded mb-4">
+          <div className="flex flex-col gap-4 md:block overflow-visible">
+            <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded mb-4 w-full md:min-w-0">
             <label className="block font-semibold mb-2">Length</label>
             <div className="flex gap-2">
-              <input type="number" value={length} onChange={(e) => setLength(e.target.value)} className="flex-1 p-2 border rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-200 dark:border-gray-700" />
-              <select value={lengthUnit} onChange={(e) => setLengthUnit(e.target.value)} className="p-2 border rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-200 dark:border-gray-700">
+              <input type="number" value={length} onChange={(e) => setLength(e.target.value)} className="flex-1 min-w-0 p-1 md:p-2 text-sm md:text-base border rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-200 dark:border-gray-700" />
+              <select value={lengthUnit} onChange={(e) => setLengthUnit(e.target.value)} className="min-w-0 p-1 md:p-2 text-sm md:text-base border rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-200 dark:border-gray-700">
                 <option value="m">Meters</option>
                 <option value="ft">Feet</option>
                 <option value="cm">Centimeters</option>
                 <option value="in">Inches</option>
               </select>
             </div>
-          </div>
+            </div>
 
-          <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded mb-4">
+            <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded mb-4 w-full md:min-w-0">
             <label className="block font-semibold mb-2">Width</label>
             <div className="flex gap-2">
-              <input type="number" value={width} onChange={(e) => setWidth(e.target.value)} className="flex-1 p-2 border rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-200 dark:border-gray-700" />
+              <input type="number" value={width} onChange={(e) => setWidth(e.target.value)} className="flex-1 min-w-0 p-1 md:p-2 text-sm md:text-base border rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-200 dark:border-gray-700" />
             </div>
-          </div>
+            </div>
 
-          <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded mb-4">
+            <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded mb-4 w-full md:min-w-0">
             <label className="block font-semibold mb-2">Tile Size</label>
             <div className="flex gap-2">
-              <input type="number" value={tileLength} onChange={(e) => setTileLength(e.target.value)} className="p-2 border rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-200 dark:border-gray-700" />
-              <input type="number" value={tileWidth} onChange={(e) => setTileWidth(e.target.value)} className="p-2 border rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-200 dark:border-gray-700" />
-              <select value={tileUnit} onChange={(e) => setTileUnit(e.target.value)} className="p-2 border rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-200 dark:border-gray-700">
+              <input type="number" value={tileLength} onChange={(e) => setTileLength(e.target.value)} className="min-w-0 p-1 md:p-2 text-sm md:text-base border rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-200 dark:border-gray-700" />
+              <input type="number" value={tileWidth} onChange={(e) => setTileWidth(e.target.value)} className="min-w-0 p-1 md:p-2 text-sm md:text-base border rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-200 dark:border-gray-700" />
+              <select value={tileUnit} onChange={(e) => setTileUnit(e.target.value)} className="min-w-0 p-1 md:p-2 text-sm md:text-base border rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-200 dark:border-gray-700">
                 <option value="in">Inches</option>
                 <option value="cm">Centimeters</option>
                 <option value="m">Meters</option>
                 <option value="ft">Feet</option>
               </select>
+            </div>
             </div>
           </div>
         </div>
@@ -379,7 +382,7 @@ export default function Calculator() {
 
           <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded mb-4">
             <label className="block font-semibold mb-2">Tiles per box</label>
-            <input type="number" value={tilesPerBox} onChange={(e) => setTilesPerBox(parseInt(e.target.value || "0"))} className="p-2 border rounded w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-200 dark:border-gray-700" />
+            <input type="number" value={tilesPerBox} onChange={(e) => setTilesPerBox(parseInt(e.target.value || "0"))} className="min-w-0 p-2 border rounded w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-200 dark:border-gray-700" />
           </div>
 
           <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded mb-4">
@@ -398,14 +401,14 @@ export default function Calculator() {
         </div>
       </div>
 
-      <div className="flex gap-2 mt-4">
-        <button onClick={calculateTiles} className="px-4 py-2 rounded bg-accent text-primary font-bold">Calculate Tiles Now</button>
-        <button onClick={saveCalculation} className="px-4 py-2 rounded border">Save Project</button>
-        <label className="px-4 py-2 rounded border cursor-pointer">
-          Load
+      <div className="flex flex-wrap gap-2 mt-4">
+        <button onClick={calculateTiles} className="w-full sm:w-auto px-4 py-2 rounded bg-accent text-primary font-bold">Calculate Tiles Now</button>
+        <button onClick={saveCalculation} className="w-full sm:w-auto px-4 py-2 rounded border">Save Project</button>
+        <label className="w-full sm:w-auto px-4 py-2 rounded border cursor-pointer flex items-center justify-center">
+          <span>Load</span>
           <input type="file" accept=".json" onChange={(e) => loadCalculation(e.target.files?.[0] ?? null)} className="hidden" />
         </label>
-        <button onClick={() => { setResultsVisible(false); setCalculationData(null); }} className="px-4 py-2 rounded border">Reset</button>
+        <button onClick={() => { setResultsVisible(false); setCalculationData(null); }} className="w-full sm:w-auto px-4 py-2 rounded border">Reset</button>
       </div>
 
       {resultsVisible && calculationData && (
@@ -437,24 +440,42 @@ export default function Calculator() {
           </div>
         </div>
       )}
-
       <div className="mt-6">
         <h4 className="font-bold mb-2">Multi-Room</h4>
         <div className="space-y-2">
           {rooms.map((r, i) => (
-            <div key={i} className="flex gap-2">
-              <input placeholder="Length (ft)" value={r.length} onChange={(e) => setRooms((rs)=>rs.map((it,idx)=>idx===i?{...it,length:e.target.value}:it))} className="p-2 border rounded flex-1 bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-200 dark:border-gray-700" />
-              <input placeholder="Width (ft)" value={r.width} onChange={(e) => setRooms((rs)=>rs.map((it,idx)=>idx===i?{...it,width:e.target.value}:it))} className="p-2 border rounded flex-1 bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-200 dark:border-gray-700" />
-              <button onClick={()=>removeRoom(i)} className="px-3 rounded bg-red-500 text-white">Remove</button>
+            <div key={i} className="flex flex-col sm:flex-row gap-2 items-start sm:items-center">
+              <input
+                placeholder="Length (ft)"
+                value={r.length}
+                onChange={(e) => setRooms((rs) => rs.map((it, idx) => (idx === i ? { ...it, length: e.target.value } : it)))}
+                className="min-w-0 p-2 border rounded flex-1 bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-200 dark:border-gray-700"
+              />
+              <input
+                placeholder="Width (ft)"
+                value={r.width}
+                onChange={(e) => setRooms((rs) => rs.map((it, idx) => (idx === i ? { ...it, width: e.target.value } : it)))}
+                className="min-w-0 p-2 border rounded flex-1 bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-200 dark:border-gray-700"
+              />
+              <button onClick={() => removeRoom(i)} className="px-3 rounded bg-red-500 text-white">Remove</button>
             </div>
           ))}
         </div>
-        <div className="mt-2 flex gap-2">
-          <button onClick={addRoom} className="px-3 py-2 rounded border">Add Room</button>
-          <button onClick={()=>{ const res = calculateMultiRoom(); if(res) alert(`Tiles: ${res.tilesWithWast}`); }} className="px-3 py-2 rounded border">Calc Multi</button>
+        <div className="mt-2 flex flex-wrap gap-2">
+          <button onClick={addRoom} className="w-full sm:w-auto px-3 py-2 rounded border">Add Room</button>
+          <button
+            onClick={() => {
+              const res = calculateMultiRoom();
+              if (res) alert(`Tiles: ${res.tilesWithWast}`);
+            }}
+            className="w-full sm:w-auto px-3 py-2 rounded border"
+          >
+            Calc Multi
+          </button>
         </div>
       </div>
-      </div>
     </div>
+  </div>
+</div>
   );
 }

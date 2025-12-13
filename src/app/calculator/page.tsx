@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Calculator from "@/components/Calculator";
+import ScrollToCalculatorButton from "@/components/Common/ScrollToCalculatorButton";
 
 export const metadata = {
   title: "Tile Calculator | Future Designz",
@@ -10,7 +11,7 @@ export const metadata = {
 export default function CalculatorPage() {
   return (
     <div className="container mx-auto px-4 pt-28 pb-12">
-      <div className="max-w-5xl mx-auto shadow-lg rounded-lg overflow-hidden">
+      <div className="max-w-5xl mx-auto shadow-lg rounded-lg overflow-hidden" id="site-calculator">
         <div style={{ minHeight: "60vh" }} className="p-6">
           <Calculator />
         </div>
@@ -28,7 +29,7 @@ export default function CalculatorPage() {
                 <li>Include recommended wastage percentage</li>
                 <li>Estimate total cost using price per box/unit</li>
               </ul>
-              <a href="#" className="inline-block rounded-md bg-red-600 px-5 py-2 text-white">Open Calculator</a>
+              <ScrollToCalculatorButton>Calculate</ScrollToCalculatorButton>
             </div>
             <div className="w-full lg:w-1/2">
               <div className="rounded-lg overflow-hidden shadow-sm">

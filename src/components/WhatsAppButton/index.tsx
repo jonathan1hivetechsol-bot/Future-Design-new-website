@@ -23,7 +23,8 @@ export default function WhatsAppButton({
       const isFaqOpen = document.body.classList.contains("faq-open");
       // hide on mobile only when faq open
       setHiddenDueToFAQ(isFaqOpen && window.innerWidth < 768);
-      const newSize = window.innerWidth < 420 ? 44 : window.innerWidth < 360 ? 40 : 56;
+      // match breakpoints: <360 -> 40, <420 -> 44, else 56
+      const newSize = window.innerWidth < 360 ? 40 : window.innerWidth < 420 ? 44 : 56;
       setSize(newSize);
       setSvgSize(newSize > 50 ? 28 : 20);
     };

@@ -8,9 +8,12 @@ export default function FAQChatbot() {
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<number | null>(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [viewportWidth, setViewportWidth] = useState<number>(typeof window !== "undefined" ? window.innerWidth : 1024);
+  // Use a stable initial value so server and client render the same markup
+  const [viewportWidth, setViewportWidth] = useState<number>(1024);
   const isXs = viewportWidth < 360;
   const isSm = viewportWidth < 420;
+  const chatBtnSize = isXs ? 40 : isSm ? 44 : 56;
+  const chatSvgSize = chatBtnSize > 50 ? 28 : 20;
 
   const suggestions = useMemo(() => {
     if (!query) return faqData.slice(0, 6);
@@ -51,8 +54,8 @@ export default function FAQChatbot() {
           aria-expanded={open}
           className="flex items-center justify-center"
             style={{
-            width: isXs ? 44 : 56,
-            height: isXs ? 44 : 56,
+            width: chatBtnSize,
+            height: chatBtnSize,
             borderRadius: 9999,
             background: "linear-gradient(180deg,#2563eb,#004aad)",
             color: "#fff",
@@ -60,7 +63,7 @@ export default function FAQChatbot() {
             transition: "transform 160ms ease, box-shadow 160ms ease",
           }}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <svg xmlns="http://www.w3.org/2000/svg" width={chatSvgSize} height={chatSvgSize} viewBox="0 0 24 24" fill="none">
             <path d="M2 4.5A2.5 2.5 0 014.5 2h15A2.5 2.5 0 0122 4.5v11A2.5 2.5 0 0119.5 18H7.8L3 22V4.5z" fill="#fff" />
           </svg>
         </button>
@@ -75,14 +78,21 @@ export default function FAQChatbot() {
             position: "fixed",
             right: isMobile ? 12 : 20,
             left: isMobile ? (isXs ? 8 : 12) : "auto",
-            /* place panel above chat button and WhatsApp: use 220 on mobile to avoid overlap */
-            bottom: isMobile ? (isXs ? 180 : 220) : 220,
-            width: isMobile ? (isXs ? "calc(100% - 16px)" : "calc(100% - 24px)") : 380,
-            maxWidth: isSm ? "calc(100vw - 24px)" : "calc(100vw - 48px)",
-            zIndex: 82,
+            /* on mobile, anchor panel below header using `top` to avoid overlap; on desktop keep bottom anchoring */
+            top: isMobile ? (isXs ? 72 : 88) : "auto",
+            bottom: isMobile ? undefined : (isXs ? 200 : 240),
+            /* narrower on mobile so it doesn't cover the header */
+            width: isMobile ? (isXs ? "calc(100% - 64px)" : "calc(100% - 80px)") : 300,
+            maxWidth: isSm ? "calc(100vw - 48px)" : "calc(100vw - 64px)",
+            /* increase the top gap by limiting height so panel can't reach header */
+            maxHeight: isMobile ? "calc(100vh - 260px)" : "calc(100vh - 340px)",
+            overflowY: "auto",
+            /* put panel below the header (header uses z-40), keep it above most content */
+            zIndex: 30,
             boxShadow: "0 20px 50px rgba(2,6,23,0.18)",
-            borderRadius: 12,
-            overflow: "hidden",
+            borderRadius: 10,
+            /* visual indicator requested: red border */
+            border: "2px solid #ef4444",
             background: "#fff",
             transform: "translateY(0)",
             transition: "transform 220ms cubic-bezier(.2,.9,.3,1), opacity 160ms ease",
@@ -123,7 +133,7 @@ export default function FAQChatbot() {
             </div>
           </div>
 
-          <div style={{ maxHeight: isXs ? 260 : 340, overflow: "auto", padding: isXs ? 8 : 12, display: "grid", gap: isXs ? 8 : 10 }}>
+          <div style={{ maxHeight: isXs ? 260 : 340, overflowY: "auto", overflowX: "hidden", padding: isXs ? 8 : 12, display: "grid", gap: isXs ? 8 : 10 }}>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               {suggestions.slice(0, 6).map((s, i) => (
                 <button

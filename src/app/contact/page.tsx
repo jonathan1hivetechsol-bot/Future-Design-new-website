@@ -1,5 +1,6 @@
 import Breadcrumb from "@/components/Common/Breadcrumb";
 import Contact from "@/components/Contact";
+import HeroShowcase from "@/components/About/HeroShowcase";
 
 import { Metadata } from "next";
 
@@ -16,6 +17,8 @@ const ContactPage = () => {
         pageName="Contact Us"
         description="Get in touch with Future Designz for inquiries about our premium bathroom tiles and fixtures. We're here to help transform your space."
       />
+
+      <HeroShowcase />
 
       <Contact />
     </>

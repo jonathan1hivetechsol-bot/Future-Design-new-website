@@ -52,8 +52,8 @@ const AboutUsSection = () => {
             <div className="relative h-20 w-20 rounded-full overflow-hidden ring-4 ring-white shadow-lg">
               <Image src="/images/about/image of ceo.jpg" alt="CEO - Future Designz" width={80} height={80} className="object-cover" />
             </div>
-            <div>
-              <h4 className="text-md font-bold text-gray-900 dark:text-white">Ahmed Khan</h4>
+              <div>
+              <h4 className="text-md font-bold text-gray-900 dark:text-white">Future Designz Team</h4>
               <p className="text-sm text-body-color">Chief Executive Officer</p>
             </div>
           </div>
@@ -144,8 +144,8 @@ const AboutUsSection = () => {
               <div key={step.id} className="relative z-10">
                 <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 border border-gray-100 dark:border-gray-800 shadow-md transform transition hover:-translate-y-2 hover:shadow-lg h-full flex flex-col">
                   <div className="flex items-center gap-4">
-                    <div className={`flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br ${step.color} ${step.darkColor} text-white shadow-sm flex-shrink-0`}>                      
-                      <svg width="28" height="28" viewBox="0 0 24 24" className="fill-current text-white dark:text-white">
+                    <div className={`flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br ${step.color} ${step.darkColor} text-red-600 dark:text-white shadow-sm flex-shrink-0`}>                      
+                      <svg width="28" height="28" viewBox="0 0 24 24" className="fill-current text-red-600 dark:text-white">
                         {step.icon}
                       </svg>
                     </div>
